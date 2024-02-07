@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,100&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-family: 'Poppins';
+}
+body{
+    /* background-color: navy; */
+    background-image: url("https://wallpapercave.com/wp/wp2593840.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#cover{
+    width: 100%;
+    height: 100vh;
+    backdrop-filter: blur(5px);
+}
+#container{
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    background-color: rgb(161, 255, 255);
+    color: black;
+    width: 310px;
+    height: 58%;
+    box-shadow: 0 0 15px rgb(54, 54, 54);
+    border-radius: 20px;
+    overflow: hidden;
+}
+#city{
+    margin: 28px;
+    padding: 5px 5px 5px 8px;
+    width: 240px;
+    border-radius: 100px;
+    border: none;
+    text-align: left;
+}
+#weatherIconBox{
+    /* background-color: black; */
+    width: 120px;
+    height: 120px;
+    text-align: center;
+    top: 35%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+#cityNameBox{
+    top: 66%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+#infoBox{
+    top: 73%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+#tempBox{
+    top: 84%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+#minMaxBox{
+    top: 91%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%,-50%);
+}
+.circle{
+    width: 600px;
+    height: 560px;
+    border-radius: 250px;
+    background-color: white;
+    position: absolute;
+    transform-origin: 50% 48%;
+}
+#circ1{
+    top: 58%;
+    left: -40%;
+    transform: translate(-50%,-50%);
+    animation: drift 3000ms infinite linear;
+    z-index: -3;
+    opacity: 0.25;
+}
+#circ2{
+    top: 56%;
+    left: -40%;
+    transform: translate(-48%,-51%);
+    animation: drift 5000ms infinite linear;
+    z-index: -2;
+    opacity: 0.3;
+}
+#circ3{
+    top: 60%;
+    left: -42%;
+    transform: translate(-52%,-52%);
+    animation: drift 6000ms infinite linear;
+    z-index: -1;
+    opacity: 0.2;
+    /* background-color: blue; */
+}
+@keyframes drift{
+    from{
+        transform : rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+#cityName{
+    width: 300px;
+}
+#minMax{
+    width: 300px;
+    font-size: 14px;
+}
+#weatherIcon{
+    animation: zoom 2s linear infinite alternate;
+    width: 100px;
+}
+@keyframes zoom{
+    from{
+        transform: scale(1.2);
+    }
+    to{
+        transform: scale(1.4);
+    }
+}
+#info{
+    width: 300px;
+    font-size: 14px;
+}
