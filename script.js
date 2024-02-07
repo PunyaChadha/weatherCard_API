@@ -19,7 +19,7 @@ form.addEventListener('submit', (e) => {
 
 async function getData(cc){
     try {
-        let url = `http://api.openweathermap.org/data/2.5/weather?q=${cc}&appid=f0b10a3b562e9815bc5ae2593ba76b87`;
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${cc}&appid=f0b10a3b562e9815bc5ae2593ba76b87`;
         let response = await fetch(url);
         let data = await response.json();
         let arrData = [data];
