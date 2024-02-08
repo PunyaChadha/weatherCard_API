@@ -32,10 +32,14 @@ async function getData(cc){
 
 function updateValues(arr){
     cityName.innerHTML = `${arr[0].name}, ${arr[0].sys.country}`;
-    let myDate = new Date();
-    info.innerHTML = `${day(myDate.getDay())} | ${month(myDate.getMonth())} ${myDate.getDate()} | ${hours(myDate.getHours())}:${minutes(myDate.getMinutes())} ${period()}`
+
+    let timezone = arr[0].timezone/3600;
+    let myDate = getMyDate(timezone);
+    info.innerHTML = `${day(myDate.getDay())} | ${month(myDate.getMonth())} ${myDate.getDate()} | ${hours(myDate.getHours())}:${minutes(myDate.getMinutes())} ${period(myDate)}`
+
     temp.innerHTML = `${(arr[0].main.temp - 273.15).toFixed(2)} <sup>o</sup>C`
     minMax.innerHTML = `Feels Like: ${(arr[0].main.feels_like - 273.15).toFixed(2)} <sup>o</sup>C | Humidity: ${(arr[0].main.humidity)}%`
+
     weather = arr[0].weather[0].main;
     changeIcon(weather);
     wea.innerHTML = weather.toUpperCase();
@@ -150,6 +154,16 @@ function month(num){
     }
 }
 
+function getMyDate(offset){
+    const d = new Date();
+
+    const utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+
+    const nd = new Date(utc + (3600000*offset));
+
+    return nd;
+}
+
 function hours(num){
     if(num > 12){
         num -= 12;
@@ -167,14 +181,13 @@ function minutes(num){
     return num;
 }
 
-function period(){
+function period(date){
     let p = "AM";
-    let myDate = new Date();
-    if(myDate.getHours() > 12){
+    let myDate = date;
+    if(myDate.getHours() >= 12){
         p = "PM";
     }
     return p;
 }
 
 // http://api.openweathermap.org/data/2.5/weather?q=delhi&appid=f0b10a3b562e9815bc5ae2593ba76b87
-//new icons for clear, drizzle, partially cloudy
