@@ -26,7 +26,7 @@ async function getData(cc){
         updateValues(arrData);
 
     } catch (error) {
-        console.log('error');
+        showError();
     }
 }
 
@@ -44,6 +44,18 @@ function updateValues(arr){
     changeIcon(weather);
     wea.innerHTML = weather.toUpperCase();
     city.value = "";
+    city.placeholder = "Enter city/state name";
+}
+
+function showError(){
+    city.value = "";
+    city.placeholder = "Enter a valid city/state name";
+    wea.innerHTML = "<span style='color:red'>-- ERROR --</br> Invalid City/State Name</span>";
+    icon.src = "";
+    cityName.innerHTML = "";
+    info.innerHTML = "";
+    temp.innerHTML = "";
+    minMax.innerHTML = "";
 }
 
 function changeIcon(w){
